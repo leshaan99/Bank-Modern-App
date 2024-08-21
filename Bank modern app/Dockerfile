@@ -19,8 +19,5 @@ RUN npm install -D tailwindcss postcss autoprefixer
 # Initialize TailwindCSS configuration
 RUN npx tailwindcss init
 
-# Expose the port that the development server runs on (e.g., 3000)
-EXPOSE 3000
-
 # Command to run the development server
 CMD ["npm", "run", "dev"]
