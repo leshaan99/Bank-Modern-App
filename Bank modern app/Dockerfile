@@ -1,23 +1,15 @@
-# Use the official Node.js 18 Alpine image as the base image
 FROM node:18-alpine
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy only the package.json and package-lock.json files
-COPY package*.json ./
+COPY package*.json .
 
-# Install project dependencies using npm ci for a cleaner install
-RUN npm ci
+RUN npm install
 
-# Copy the rest of the application code to the container
-COPY ./ ./
+COPY . .
 
-# Install TailwindCSS, PostCSS, and Autoprefixer
 RUN npm install -D tailwindcss postcss autoprefixer
 
-# Initialize TailwindCSS configuration
 RUN npx tailwindcss init
 
-# Command to run the development server
 CMD ["npm", "run", "dev"]
